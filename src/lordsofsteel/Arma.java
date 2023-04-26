@@ -19,4 +19,30 @@ public class Arma {
         this.wpow  = wpow;
         this.wvel  = wvel;
     }
+
+    public String getTipus() {
+        return tipus;
+    }
+
+    public void setTipus(String tipus) {
+        this.tipus = tipus;
+    }
+
+    public int getWpow() {
+        return wpow;
+    }
+
+    public void setWpow(int wpow) {
+        this.wpow = wpow;
+    }
+
+    public int getWvel() {
+        return wvel;
+    }
+
+    public void setWvel(int wvel) {
+        this.wvel = wvel;
+    }
+    
+    
 }
