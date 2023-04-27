@@ -10,16 +10,17 @@ package lordsofsteel;
  */
 public class Mitja extends Personatge {
     
-    public Mitja(double forca, double constitucio, double velocitat,
-                   double intelligencia, double sort) {
+    public Mitja(int forca, int constitucio, int velocitat,
+                 int intelligencia, int sort, Arma arma) {
 
-        super(forca,constitucio,velocitat,intelligencia,sort);
+        super(forca,constitucio,velocitat,intelligencia,sort,arma);
     }
     
 
+    @Override
     protected void calculaEstadistiquesSecundaries() {
         super.calculaEstadistiquesSecundaries();
         pe = velocitat+ sort + intelligencia + forca;
-    }    
+    }
 
 }

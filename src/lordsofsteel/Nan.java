@@ -10,15 +10,16 @@ package lordsofsteel;
  */
 public class Nan extends Personatge {
     
-        public Nan(double forca, double constitucio, double velocitat,
-                   double intelligencia, double sort) {
+    public Nan(int forca, int constitucio, int velocitat,
+               int intelligencia, int sort, Arma arma) {
 
-        super(forca,constitucio,velocitat,intelligencia,sort);
+        super(forca,constitucio,velocitat,intelligencia,sort,arma);
     }
 
+    @Override
     protected void calculaEstadistiquesSecundaries() {
         super.calculaEstadistiquesSecundaries();
-        pd = (forca + arma.wpow + constitucio)/4;
+        pd = (forca + arma.getWpow() + constitucio)/4;
     }    
         
 

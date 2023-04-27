@@ -10,15 +10,16 @@ package lordsofsteel;
  */
 public class Maia extends Personatge {
 
-    public Maia(double forca, double constitucio, double velocitat,
-                   double intelligencia, double sort) {
+    public Maia(int forca, int constitucio, int velocitat,
+                int intelligencia, int sort, Arma arma) {
 
-        super(forca,constitucio,velocitat,intelligencia,sort);
+        super(forca,constitucio,velocitat,intelligencia,sort,arma);
     }
 
+    @Override
     protected void calculaEstadistiquesSecundaries() {
         super.calculaEstadistiquesSecundaries();
         pa = intelligencia + sort + arma.wvel + velocitat;
-    }    
+    }
     
 }

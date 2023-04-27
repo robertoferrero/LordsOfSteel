@@ -11,75 +11,121 @@ package lordsofsteel;
 public class Personatge {
 
     // Atributs principals
-    protected double forca;
-    protected double constitucio;
-    protected double velocitat;
-    protected double intelligencia;
-    protected double sort;
+    protected int forca;
+    protected int constitucio;
+    protected int velocitat;
+    protected int intelligencia;
+    protected int sort;
     
     // Estadístiques derivades
-    protected double ps;
-    protected double pd;
-    protected double pa;
-    protected double pe;
+    protected int ps;  // Punts de salut
+    protected int pd;  // Punts de dany
+    protected int pa;  // Probabilitat d'atac
+    protected int pe;  // Probabilitat d'esquivar
 
     
     // Arma
     protected Arma arma;
-    
-    public double getForca() {
-        return forca;
-    }
 
-    public double getConstitucio() {
-        return constitucio;
-    }
-
-    public double getVelocitat() {
-        return velocitat;
-    }
-
-    public double getIntelligencia() {
-        return intelligencia;
-    }
-
-    public double getSort() {
-        return sort;
-    }
-
-    public double getPs() {
-        return ps;
-    }
-
-    public double getPd() {
-        return pd;
-    }
-
-    public double getPa() {
-        return pa;
-    }
-
-    public double getPe() {
-        return pe;
-    }
-    
-        
-    public Personatge(double forca, double constitucio, double velocitat,
-                      double intelligencia, double sort) {
+    public Personatge(int forca, int constitucio, int velocitat,
+                      int intelligencia, int sort, Arma arma) {
         this.forca         = forca;
         this.constitucio   = constitucio;
         this.velocitat     = velocitat;
         this.intelligencia = intelligencia;
         this.sort          = sort;
-
+        this.arma          = arma;
         calculaEstadistiquesSecundaries();
     }
                       
     protected void calculaEstadistiquesSecundaries() {
         ps = constitucio + forca;
-        pd = forca/4;
+        pd = (forca + arma.getWpow())/4;
         pa = intelligencia + sort;
         pe = velocitat + sort + intelligencia;
     }
+
+    
+    public int getForca() {
+        return forca;
+    }
+
+    public int getConstitucio() {
+        return constitucio;
+    }
+
+    public int getVelocitat() {
+        return velocitat;
+    }
+
+    public int getIntelligencia() {
+        return intelligencia;
+    }
+
+    public int getSort() {
+        return sort;
+    }
+
+    public int getPs() {
+        return ps;
+    }
+
+    public int getPd() {
+        return pd;
+    }
+
+    public int getPa() {
+        return pa;
+    }
+
+    public int getPe() {
+        return pe;
+    }
+
+    public Arma getArma() {
+        return arma;
+    }
+
+    
+    public void setForca(int forca) {
+        this.forca = forca;
+    }
+
+    public void setConstitucio(int constitucio) {
+        this.constitucio = constitucio;
+    }
+
+    public void setVelocitat(int velocitat) {
+        this.velocitat = velocitat;
+    }
+
+    public void setIntelligencia(int intelligencia) {
+        this.intelligencia = intelligencia;
+    }
+
+    public void setSort(int sort) {
+        this.sort = sort;
+    }
+
+    public void setPs(int ps) {
+        this.ps = ps;
+    }
+
+    public void setPd(int pd) {
+        this.pd = pd;
+    }
+
+    public void setPa(int pa) {
+        this.pa = pa;
+    }
+
+    public void setPe(int pe) {
+        this.pe = pe;
+    }
+
+    public void setArma(Arma arma) {
+        this.arma = arma;
+    }
+
     
 }
