@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class LordsOfSteel {
 
+    static Scanner sc = new Scanner(System.in);
     /**
      * @param args the command line arguments
      */
@@ -39,8 +40,7 @@ public class LordsOfSteel {
         personatges.add(h1);
         personatges.add(mi1);
         personatges.add(ma1);
-        
-        Scanner sc = new Scanner(System.in);
+                
         
         /* Menú principal */
         System.out.println("");
@@ -78,6 +78,15 @@ public class LordsOfSteel {
     
     
     public static void iniciarCombat(ArrayList<Personatge> personatges) {
+        
+        //for (Personatge p : personatges)
+        for (int i = 0; i < personatges.size(); ++i) {
+            System.out.printf("%d %s\n",(i+1),personatges.get(i).getNom());
+        }
+        
+        System.out.println("\nTria un personatge: ");
+        int entrada = sc.nextInt();
+        
         
         
     }
