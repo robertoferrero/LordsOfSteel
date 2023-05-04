@@ -51,7 +51,7 @@ public class LordsOfSteel {
         System.out.println("4.- Iniciar combat");
         System.out.println("5.- Sortir");
         System.out.println("");
-        System.out.println("Tria opció [1-5]: ");
+        System.out.print("Tria opció [1-5]: ");
         
         String entrada = sc.nextLine();
         
@@ -79,16 +79,58 @@ public class LordsOfSteel {
     
     public static void iniciarCombat(ArrayList<Personatge> personatges) {
         
+        boolean[] seleccionats = new boolean[personatges.size()];
+        Personatge[] lluitadors = new Personatge[2];
         //for (Personatge p : personatges)
-        for (int i = 0; i < personatges.size(); ++i) {
-            System.out.printf("%d %s\n",(i+1),personatges.get(i).getNom());
+        for (int selec = 1; selec <= 2; selec++) {
+            for (int i = 0; i < personatges.size(); ++i) {
+                if (!seleccionats[i]) {
+                    String tipus = "";
+                    if (personatges.get(i) instanceof Nan)
+                        tipus = "Nan";
+                    else if (personatges.get(i) instanceof Huma)
+                        tipus = "Huma";
+                    else if (personatges.get(i) instanceof Mitja)
+                        tipus = "Mitja";
+                    else if (personatges.get(i) instanceof Maia)
+                        tipus = "Maia";
+
+                    System.out.printf("%d %s (%s)\n",(i+1),personatges.get(i).getNom(),
+                                                     tipus);
+                }            
+            }
+            System.out.print("\nTria un personatge " + selec + ": ");
+            int opcio = sc.nextInt();
+            seleccionats[opcio-1] = true;
+            lluitadors[selec-1] = personatges.get(opcio-1);
+            System.out.println("Personatge triat: " + 
+                              personatges.get(opcio-1).getNom());        
         }
         
-        System.out.println("\nTria un personatge: ");
-        int entrada = sc.nextInt();
+        
+        // Inici combat
+        Personatge atacant  = lluitadors[0];
+        Personatge defensor = lluitadors[1];
         
         
+        Dau dau1 = new Dau();
+        Dau dau2 = new Dau();
+        Dau dau3 = new Dau();
         
+        int valor = dau1.llencar() + dau2.llencar() + dau3.llencar();
+        //System.out.println("Valor daus: " + valor);
+        
+        if (valor <= atacant.getPa()) { // Atacant ataca
+            valor = dau1.llencar() + dau2.llencar() + dau3.llencar();
+            if (valor > defensor.getPe()) { // No aconsegueix esquivar
+                defensor.setPs(defensor.getPs() - atacant.getPd());
+            }
+        }
+        
+        // Final ronda
+        Personatge aux = atacant;
+        atacant  = defensor;
+        defensor = aux;
     }
     
 }
