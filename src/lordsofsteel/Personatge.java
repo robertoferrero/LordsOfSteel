@@ -27,8 +27,12 @@ public class Personatge {
     // Arma
     protected Arma arma;
 
-    public Personatge(int forca, int constitucio, int velocitat,
+    // Nom
+    protected String nom;
+    
+    public Personatge(String nom, int forca, int constitucio, int velocitat,
                       int intelligencia, int sort, Arma arma) {
+        this.nom           = nom;
         this.forca         = forca;
         this.constitucio   = constitucio;
         this.velocitat     = velocitat;
